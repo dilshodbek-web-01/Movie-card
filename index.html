@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP MIN CSS -->
+    <link rel="stylesheet" href="./styles/bootstrap.min.css">
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>lesson - 1</title>
+</head>
+<body>
+    <header class="bg-success">
+        <div class="container">
+            <nav class="nav p-3 bg-success">
+                <h3 class="nav__logo text-white">
+                    All Movies APP
+                </h3>
+            </nav>  
+        </div>
+    </header>
+
+    <main>
+
+        <div class="modal-window modal-hide">
+            <div class="modal-container position-relative">
+                    <button class="btn btn-danger position-absolute end-0 me-4 mt-4" id="close">X</button>
+                <div class="modal-content container">
+
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 p-3 bg-light m-2">
+                        <form action="#" id="submitForm">
+                            <label for="filmName" class="w-75 my-2 fs-5">
+                                Enter film name
+                                <input type="text" class="form-control" id="filmName" placeholder="Enter film name">
+                            </label>
+
+                            <label for="filmRating" class="w-75 my-2 fs-5">
+                                Enter film rating
+                                <input type="number" min="1" max="10" class="form-control" id="filmRating" placeholder="Enter film rating">
+                            </label>
+
+                            <select id="category" class="form-select w-75 p-2 my-3">
+                                <option value="all" selected disabled>Select film category</option>
+                            </select>
+
+                            <button type="submit" class="btn btn-success w-75 p-2">
+                                SEARCH
+                            </button>
+
+                            <div class="card d-none card-res w-75 my-3 p-3 shadow bg-light">
+                                <h4 class="text-success" id="res">
+                                     
+                                </h4>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="col-md-7 p-3 bg-light m-2">
+
+                        <div class="wrapper" style="height: 90vh; overflow-y: scroll;">
+
+                            <!-- All movies render -->
+                        </div>
+
+                    </div>
+
+                    <div class="col-md p-3 bg-light m-2">
+                        <!-- bookmark -->
+                        <div class="bookmark">
+                            <!-- render all bookmarks -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page-btns d-flex align-items-center gap-2 w-50 mx-auto" style="overflow-x: scroll;">
+                    
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+</body>
+<script src="./scripts/db.js"></script>
+<script src="./scripts/utils.js"></script>
+<script src="./scripts/script.js"></script>
+</html>

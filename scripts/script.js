@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded",()=> {
 
 movies.splice(420)
 
-// --------------- NORMALIZE ALL MOVIES --------------- //
+// --------------- NORMALIZE ALL MOVIES start --------------- //
 
 const AllMovies = movies.map((movies) => {
     return {
@@ -21,7 +21,10 @@ const AllMovies = movies.map((movies) => {
     }
 })
 
-// ----------------------- RENDER ALL MOVIES function -----------------------//
+// --------------- NORMALIZE ALL MOVIES end --------------- //
+
+
+// ----------------------- RENDER ALL MOVIES function start -----------------------//
 
 function renderAllMovies(AllMovies) {
     $('.wrapper').innerHTML = null
@@ -65,7 +68,10 @@ function renderAllMovies(AllMovies) {
 }
 renderAllMovies(AllMovies)
 
-// ----------------- DINAMIC CATEGORIES -------------------------//
+// ----------------------- RENDER ALL MOVIES function end -----------------------//
+
+
+// ----------------- DINAMIC CATEGORIES start -------------------------//
 
 const dynamicCategory = () => {
 
@@ -81,7 +87,7 @@ const dynamicCategory = () => {
 
     category.sort();
     category.unshift('All')
-    category.forEach((el) => {
+    category.forEach((el) => {  
         const option = createElement('option', 'item-option', el);
         $('#category').appendChild(option)
     })
@@ -91,7 +97,9 @@ const dynamicCategory = () => {
 
 dynamicCategory()
 
-// ----------------- FIND FILM FUNCTIONS START ----------------- //
+// ----------------- DINAMIC CATEGORIES end -------------------------//
+
+// ----------------- FIND FILM FUNCTIONS start ----------------- //
 
 const findFilm = (regexp, rating = 0, category) => {
 
@@ -106,10 +114,10 @@ const findFilm = (regexp, rating = 0, category) => {
     })
 }
 
-// ----------------- FIND FILM FUNCTIONS END ----------------- //
+// ----------------- FIND FILM FUNCTIONS end ----------------- //
 
 
-// ----------------- FIND FILM LISTENER ----------------- //
+// ----------------- FIND FILM LISTENER start ----------------- //
 
 $('#submitForm').addEventListener('submit', (e) => {
 
@@ -130,12 +138,12 @@ $('#submitForm').addEventListener('submit', (e) => {
 
             searchResultsRender(searchResult)
 
-            $(".card-res").classList.remove('d-none');
+            $(".card-result").classList.remove('d-none');
 
-            $('#res').innerHTML = `<strong>${searchResult.length}</strong> ta ma'lumot topildi`;
+            $('#result').innerHTML = `<strong>${searchResult.length}</strong> ta ma'lumot topildi`;
 
         } else {
-            $(".card-res").classList.add('d-none');
+            $(".card-result").classList.add('d-none');
             $('.wrapper').innerHTML = `<h1 class="text-center text-danger">NOT FOUND INFORMATION</h1>`;
         }
     }, 1000)
@@ -179,7 +187,7 @@ function searchResultsRender(data = []) {
 
 
 
-        $('.wrapper').appendChild(card)
+        $('.wrapper').appendChild(card) 
     })
 }
 
@@ -256,13 +264,14 @@ $('.wrapper').addEventListener('click', (e) => {
 
 
 function addBookmark(ID) {
-    const bookmark = JSON.parse(localStorage.getItem("bookmark"));
+    const bookmark = JSON.parse(localStorage.getItem("bookmark")) || [];
 
     const filmItem = AllMovies.filter((e) => {
         return e.id == ID;
     });
+    
 
-    if (!bookmark.includes(filmItem[0])) {
+    if (!bookmark.find(e => e.id == ID)) {
         bookmark.push(filmItem[0])
     } else {
         alert("avval qo`shilgan")
@@ -308,7 +317,7 @@ let bookmarks = JSON.parse(localStorage.getItem("bookmark"));
 
 renderBookmark(bookmarks)
 
-// ----------------------- BOOKMARK START END -------------------------- //
+// ----------------------- BOOKMARK end -------------------------- //
 
 // ---------------------- PAGINATION -------------------------------- //
 
